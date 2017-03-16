@@ -1,0 +1,63 @@
+<label for="">Does your car have any of the following? <br />Check all that apply:</label>
+<div class="form-group">
+    <div ng-repeat="r in riskFields.options">
+        <input type="checkbox"
+            name="" 
+            ng-value="r"
+            ng-checked="userInput.risk.type.indexOf(r) > -1"
+            ng-click="riskFields.toggleSelection(r)"> {{ r }}
+         </input>
+    </div>
+</div>
+
+<label for="">Is your vehicle modified?</label>
+<div class="form-group">
+    <div ng-repeat="mod in modFields.isModded">
+        <input type="radio"
+            name=""
+            ng-model="userInput.modification.carModded"
+            ng-value="mod"> {{ mod }}
+        </input>
+    </div>
+</div>
+<div ng-show="moddedVisible">
+    <label for="">Let us know more:</label>
+    <div class="form-group">
+        <textarea ng-disabled="modEx"
+                class="form-control"
+                name=""
+                ng-model="userInput.modification.details">
+        </textarea>
+    </div>
+
+    <label for="">Are your modifications certified?</label>
+    <div class="form-group">  
+        <div ng-repeat="cert in modFields.isCertified">
+            <input type="radio"
+                name=""
+                ng-value="cert"
+                ng-model="userInput.modification.modCertified"
+                ng-click="certi()"> {{ cert }}
+            </input>
+        </div>
+    </div>
+    <div class="form-group">  
+        <div ng-show="certifiedVisible">
+            <pre class="alert alert-danger">Uncertified mods must be reffered.</pre>
+        </div>
+        <button type="submit">Send</button>
+    </div>
+</div>
+
+
+ <button ui-sref="form.vehicle"
+         class="btn btn-block btn-info"
+         ng-disabled="userInput.modification.carModded==='yes' && userInput.modification.modCertified==='no'">
+         Vehicle
+</button>
+
+ <button ui-sref="form.license"
+         class="btn btn-block btn-info"
+         ng-disabled="userInput.modification.carModded==='yes' && userInput.modification.modCertified==='no'">
+         License
+</button>

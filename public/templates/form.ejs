@@ -1,0 +1,32 @@
+<div class="row">
+<div class="col-sm-8 col-sm-offset-2">
+
+  <div id="form-container">
+  
+      <div class="page-header text-center">
+          <h2>Carsure Premium Calculator</h2>
+          
+          <!-- the links to our nested states using relative paths -->
+          <!-- add the active class if the state matches our ui-sref -->
+          <div id="status-buttons" class="text-center">
+              <a ui-sref-active="active" ui-sref=".personal"><span>1</span> Personal </a>
+              <a ui-sref-active="active" ui-sref=".quote-options"><span>2</span> Quote Type </a>
+              <a ui-sref-active="active" ui-sref=".vehicle"><span>3</span> Vehicle </a>
+              <a ui-sref-active="active" ui-sref=".risk"><span>4</span> Risk </a>
+              <a ui-sref-active="active" ui-sref=".license"><span>5</span> License </a>
+              <a ui-sref-active="active" ui-sref=".insurance"><span>6</span> Insurance </a>
+              <a ui-sref-active="active" ui-sref=".accident"><span>7</span> Accident </a>
+              <a ui-sref-active="active" ui-sref=".review"><span>8</span> Review </a>
+              <a ui-sref-active="active" ui-sref=".premium"><span>9</span> Premium </a>
+          </div>
+      </div>
+      
+      <!-- use ng-submit to catch the form submission and use our Angular function -->
+      <form id="signup-form" name="userForm" ng-submit="addLead();">
+          <!-- our nested state views will be injected here -->
+          <div id="form-views" ui-view></div>
+      </form>
+  
+  </div>
+</div>
+</div>

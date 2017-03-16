@@ -1,0 +1,49 @@
+<label for="">What type of license do you have?:</label>
+<div class="form-group">  
+    <select class="form-control"
+            ng-change="resetLicense()"
+            name=""
+            ng-model="userInput.license.type"
+            ng-options="o as o for o in licenseFields.licenseType">
+    </select>
+</div>
+
+ <div ng-switch="userInput.license.type">
+     <div ng-switch-when="full">
+      <div class="form-group"> 
+         <label for="">Have you had your license for a year or longer?</label>
+         <div ng-repeat="aYear in licenseFields.yearLength">
+           <input type="radio"
+                  name ="" 
+                  ng-model="userInput.license.yearLength"
+                  ng-value="aYear" 
+                  ng-click="showOverTwo()">
+            </input> {{ aYear }}
+         </div>
+       </div>
+
+       <div ng-show="licenseVisible">
+        <div class="form-group"> 
+         <label for="">Have you had your license for two years or longer?</label>
+         <div ng-repeat="twoYear in licenseFields.twoYearLength">
+           <input type="radio" 
+                  name=""
+                  ng-value="twoYear"
+                  ng-model="userInput.license.twoYearLength">
+             </input> {{ twoYear }}
+         </div>
+     </div>
+       </div>
+     </div>
+</div>
+
+ <button ui-sref="form.risk"
+         class="btn btn-block btn-info">
+         Risk
+</button>
+
+ <button ui-sref="form.insurance"
+         class="btn btn-block btn-info"
+         ng-disabled="userInput.license.type==='full' && !userInput.license.yearLength || userInput.license.yearLength==='over a year' &&!userInput.license.twoYearLength">
+         Insurance
+</button>

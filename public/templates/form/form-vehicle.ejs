@@ -1,0 +1,60 @@
+<div class="form-group" ng-class="{ 'has-error' : userForm.make.$invalid && !userForm.make.$pristine }">
+    <label for="">Make:</label>
+    <input class="form-control"
+           name="make"
+           type="text"
+           ng-model="userInput.vehicle.make"
+           required>
+    </input>
+    <p ng-show="userForm.make.$invalid && !userForm.make.$pristine" class="help-block">Your car make is required.</p>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error' : userForm.model.$invalid && !userForm.model.$pristine }">
+    <label for="">Model:</label>
+    <input class="form-control"
+           name="model"
+           type="text"
+           ng-model="userInput.vehicle.model"
+           required>
+    </input>
+    <p ng-show="userForm.model.$invalid && !userForm.model.$pristine" class="help-block">Your car model is required.</p>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error' : userForm.year.$invalid && !userForm.year.$pristine }">
+    <label for="">Year:</label>
+    <input class="form-control"
+           name="year"
+           type="text"
+           ng-model="userInput.vehicle.year"
+           required>
+    </input>
+    <p ng-show="userForm.year.$invalid && !userForm.year.$pristine" class="help-block">Your car year is required.</p>
+</div>
+
+<div class="form-group" ng-class="{ 'has-error' : userForm.value.$invalid && !userForm.value.$pristine }">
+    <label for="">Car Value:</label>
+    <input class="form-control"
+           name="value"
+           type="text"
+           ng-model="userInput.vehicle.value"
+           required>
+    </input>
+    <p ng-show="userForm.value.$invalid && !userForm.value.$pristine" class="help-block">Your car's value is required.</p>
+</div>
+
+ <button  ui-sref="form.quote-options" 
+          class="btn btn-block btn-info">
+          Previous
+</button>
+
+ <button  ui-sref="form.risk"
+          class="btn btn-block btn-info"
+          ng-disabled="!userForm.$valid || userForm.$pristine">
+          Next
+  </button>
+
+
+
+
+
+

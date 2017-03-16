@@ -1,0 +1,49 @@
+<label for="">Did you have previous insurance?</label>
+<div class="form-group">
+    <div ng-repeat="prev in insuranceFields.previousInsurance">
+        <input type="radio"
+             name =""
+             ng-model="userInput.insurance.previousInsurance"
+             ng-value="prev"
+             ng-click="showInsuranceType()">
+        </input> {{ prev }}
+    </div>
+</div>
+
+<div ng-show="previousInsuranceVisible">
+  <label for="">Type of insurance?</label>
+    <div class="form-group">
+      <div ng-repeat="prev in insuranceFields.insuranceOptions">
+        <input type="radio"
+               name ="previous-insurance" 
+               ng-model="userInput.insurance.insuranceSelected"
+               ng-value="prev"
+               ng-click="showFullInsuranceLength()">
+          </input>{{ prev }}
+      </div>
+    </div>
+  <div ng-show="fullInsuranceVisible">
+    <label for="">Did you have full insurance for more than one year?:</label>
+        <div class="form-group">
+            <div ng-repeat="year in insuranceFields.fullYear">
+                <input type="radio"
+                     name =""
+                     ng-model="userInput.insurance.fullYear"
+                     ng-value="year">
+                </input>{{ year }}
+            </div>
+        </div>
+    </div>
+</div>
+
+<button ui-sref="form.license"
+        class="btn btn-block btn-info">
+        License
+</button>
+
+<button ui-sref="form.accident"
+        class="btn btn-block btn-info"
+        ng-disabled="(userInput.insurance.previousInsurance==='yes' || userInput.insurance.previousInsurance==='') && (userInput.insurance.insuranceSelected ==='' ||  userInput.insurance.insuranceSelected ==='full') && (userInput.insurance.fullYear ==='')"
+        ng-click="sendEmailAlert('initial')">
+        Accident
+</button>

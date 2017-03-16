@@ -1,0 +1,66 @@
+
+<div>
+<label for="">Have you had any accidents or convictions in the last year?</label>
+<div class="form-group">
+    <div ng-repeat="acc in accidentFields.options">
+        <input type="radio"
+               name=""
+               ng-model="userInput.accident.prevAccident"
+               ng-value="acc"
+               ng-click="showAccidetOrConviction(accident_choice.selected)">
+        </input> {{ acc }}
+    </div>
+</div>
+
+<div ng-show="accidentVisible">
+    <label for="">Was it an accident or conviction?</label>
+    <div class="form-group">
+       <div ng-repeat="accType in accidentFields.accidentType">
+            <input ng-change="showConvicton()"
+                type="radio"
+                name =""
+                ng-model="userInput.accident.accidentType"
+                ng-value="accType">
+           </input> {{ accType }}
+       </div>
+    </div>
+
+  <div ng-show="convictionVisible">
+      <pre class="alert alert-danger">Convictions are referred</pre>
+      <label for="">Let us know what happened</label>
+      <div class="form-group">
+          <textarea class="form-control"
+                    name=""
+                    ng-model="userInput.accident.details">
+          </textarea>
+          <input type="submit" class="btn btn-danger" value="Send">
+      </div>
+  </div>
+
+  <div ng-show="faultVisible">
+      <label for="">Were you at fault?</label>
+      <div class="form-group">
+         <div ng-repeat="acci in accidentFields.atFault">
+           <input type="radio"
+                  name=""
+                  ng-model="userInput.accident.atFault"
+                  ng-value="acci" > 
+             </input> {{ acci }}
+         </div>
+      </div>
+  </div>
+</div>
+
+
+
+<button ui-sref="form.insurance"
+        class="btn btn-block btn-info">
+        Insurance
+</button>
+
+<button ui-sref="form.review"
+        class="btn btn-block btn-info"
+        ng-disabled="(userInput.accident.prevAccident==='yes' || userInput.accident.prevAccident==='') && (userInput.accident.atFault ==='' )">
+        Review
+</button>
+
