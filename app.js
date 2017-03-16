@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 
 // Require mongoose, connect and require mongoose models
 var mongoose = require("mongoose");
-mongoose.connect('mongodb://localhost/carsure');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://lenthou:Feb096333!@ds133450.mlab.com:33450/heroku_xr82rnmc');
 require("./models/Leads");
 
 
